@@ -13,48 +13,14 @@ typedef unsigned char  UINT_8;
 using namespace std;
 
 namespace TFL {
-	struct TFL_DLL TFL_PointXYZ
-	{
-	public:
-		float x;
-		float y;
-		float z;
-		//Base - Constructor
-		TFL_PointXYZ::TFL_PointXYZ();
-		//Set XYZ - Constructor (float, float, float)
-		TFL_PointXYZ::TFL_PointXYZ(float x, float y, float z);
-	};
 
-	//This is Class For treat PointsCloud With XYZ
-	//Field has Points by std::vector
-	struct TFL_DLL TFL_PointCloud
-	{
-	private:
-		//Variable to save Points
-		vector<TFL_PointXYZ> mPoints;
-	public:
-		//Base - Constructor (void)
-		TFL_PointCloud();
+	#define	TFL_FRAME_W_TB_TOF_SQ930PU_IV		640
+	#define	TFL_FRAME_H_TB_TOF_SQ930PU_IV		480
+	#define	TFL_FRAME_SIZE_TB_TOF_SQ930PU_IV	(TFL_FRAME_W_TB_TOF_SQ930PU_IV * TFL_FRAME_H_TB_TOF_SQ930PU_IV)
 
-		//Copy from others - Constructor (TFL_PointCloud&)
-		TFL_PointCloud(TFL_PointCloud* pointCloud);
-
-		//Destructor
-		//virtual ~TFL_PointCloud();
-
-
-		//Push Back at vector
-		void PushBack(TFL_PointXYZ* point);
-
-		//Return point at index
-		TFL_PointXYZ At(int idx);
-
-		//Return size of points
-		int Size();
-
-		//Return Points by vector
-		std::vector<TFL_PointXYZ>* Points();
-	};
+	#define TFL_FRAME_WIDTH						TFL_FRAME_W_TB_TOF_SQ930PU_IV
+	#define TFL_FRAME_HEIGHT					TFL_FRAME_H_TB_TOF_SQ930PU_IV
+	#define TFL_FRAME_SIZE						TFL_FRAME_SIZE_TB_TOF_SQ930PU_IV
 
 	enum class TFL_DLL TFL_RESULT
 	{
@@ -81,7 +47,28 @@ namespace TFL {
 		TFL_DETECT_GROUND_ERR = -20,
 		TFL_EXTRACT_OBJECT_ERR = -21,
 		TFL_NO_PEOPLE = -22
-
 	};
+
+	struct TFL_DLL TFL_PointXYZ
+	{
+	public:
+		float x;
+		float y;
+		float z;
+		//Base - Constructor
+		TFL_PointXYZ::TFL_PointXYZ();
+		//Set XYZ - Constructor (float, float, float)
+		TFL_PointXYZ::TFL_PointXYZ(float x, float y, float z);
+	};
+
+	struct TFL_DLL TFL_PointCloud
+	{
+		vector<TFL_PointXYZ> Points;
+	};
+
+	TFL_RESULT CopyPointCloud(TFL_PointCloud*, TFL_PointCloud*);
+
+
+	
 }
 
