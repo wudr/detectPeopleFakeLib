@@ -16,8 +16,12 @@ TFL::TFL_RESULT TFL::PLD::DetectPeole::Excute(UINT_16* inputInitDepthData, UINT_
 
 TFL::TFL_RESULT TFL::PLD::DetectPeole::GetGroundCloud(TFL_PointCloud& outputGetGroundCloud)
 {
-	TFL_PointCloud testPC;
-	outputGetGroundCloud = testPC;
+	auto testPC = new TFL_PointCloud();
+	TFL_PointXYZ point_1(1, 2, 3);
+	TFL_PointXYZ point_2(4, 5, 6);
+	testPC->Points.push_back(point_1);
+	testPC->Points.push_back(point_2);
+	outputGetGroundCloud = *testPC;
 	return TFL_RESULT::TFL_OK;
 }
 

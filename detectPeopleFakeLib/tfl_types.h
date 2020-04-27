@@ -64,6 +64,7 @@ namespace TFL {
 	struct TFL_DLL TFL_PointCloud
 	{
 		vector<TFL_PointXYZ> Points;
+		TFL_PointCloud::TFL_PointCloud();
 	};
 
 	TFL_RESULT CopyPointCloud(TFL_PointCloud*, TFL_PointCloud*);
