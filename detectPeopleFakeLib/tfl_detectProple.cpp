@@ -1,6 +1,16 @@
 #include "pch.h"
 #include "tfl_detectPeople.h"
 
+TFL::TFL_PointXYZ::TFL_PointXYZ() {
+	x = 0;
+}
+
+TFL::TFL_PointXYZ::TFL_PointXYZ(float pointX, float pointY, float pointZ) {
+	x = pointX;
+	y = pointY;
+	z = pointZ;
+}
+
 TFL::PLD::TFL_Human::TFL_Human()
 {
 }
@@ -17,10 +27,10 @@ TFL::TFL_RESULT TFL::PLD::DetectPeole::Excute(UINT_16* inputInitDepthData, UINT_
 TFL::TFL_RESULT TFL::PLD::DetectPeole::GetGroundCloud(TFL_PointCloud& outputGetGroundCloud)
 {
 	auto testPC = new TFL_PointCloud();
-	TFL_PointXYZ point_1(1, 2, 3);
+	TFL_PointXYZ point_1(1, 2, 3); 
 	TFL_PointXYZ point_2(4, 5, 6);
-	testPC->Points.push_back(point_1);
-	testPC->Points.push_back(point_2);
+	testPC->push_back(point_1);
+	testPC->push_back(point_2);
 	outputGetGroundCloud = *testPC;
 	return TFL_RESULT::TFL_OK;
 }

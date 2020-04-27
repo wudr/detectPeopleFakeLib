@@ -55,19 +55,21 @@ namespace TFL {
 		float x;
 		float y;
 		float z;
-		//Base - Constructor
-		TFL_PointXYZ::TFL_PointXYZ();
-		//Set XYZ - Constructor (float, float, float)
-		TFL_PointXYZ::TFL_PointXYZ(float x, float y, float z);
+		////Base - Constructor
+		//TFL_PointXYZ::TFL_PointXYZ();
+		////Set XYZ - Constructor (float, float, float)
+		//TFL_PointXYZ::TFL_PointXYZ(float x, float y, float z);
 	};
 
-	struct TFL_DLL TFL_PointCloud
-	{
-		vector<TFL_PointXYZ> Points;
-		TFL_PointCloud::TFL_PointCloud();
-	};
+	typedef	std::vector<TFL_PointXYZ> TFL_PointCloud;
 
-	TFL_RESULT CopyPointCloud(TFL_PointCloud*, TFL_PointCloud*);
+	//struct TFL_DLL TFL_PointCloud
+	//{
+	//	vector<TFL_PointXYZ> Points;
+	//	TFL_PointCloud::TFL_PointCloud();
+	//};
+
+	//TFL_RESULT CopyPointCloud(TFL_PointCloud*, TFL_PointCloud*);
 
 
 	

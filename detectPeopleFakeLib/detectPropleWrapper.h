@@ -1,4 +1,3 @@
-#include "tfl_types.h"
 #include "tfl_detectPeople.h"
 
 using namespace TFL;

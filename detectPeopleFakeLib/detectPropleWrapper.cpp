@@ -21,11 +21,11 @@ TFL_RESULT ExcuteWrapper(DetectPeole* pInstance, UINT_16* inputInitDepthData, UI
 
 TFL_RESULT GetGroundCloudWrapper(DetectPeole* pInstance, TFL_PointXYZ** outputGetGroundPlaneCloud, size_t* size) {
     
-    auto* items = new TFL_PointCloud();
+    //auto* items = new TFL_PointCloud();
+    TFL_PointCloud* items = new TFL_PointCloud();
     pInstance->GetGroundCloud(*items);
-    auto GroundCloud = &items->Points;
-    *outputGetGroundPlaneCloud = GroundCloud->data();
-    *size = GroundCloud->size();
+    *outputGetGroundPlaneCloud = items->data();
+    *size = items->size();
     return TFL_RESULT::TFL_OK;
 }
 
