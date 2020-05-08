@@ -1,5 +1,8 @@
 #include "pch.h"
 #include "tfl_detectPeople.h"
+#include <iostream>
+
+using namespace std;
 
 TFL::TFL_PointXYZ::TFL_PointXYZ() {
 	x = 0;
@@ -19,7 +22,32 @@ TFL::PLD::DetectPeole::DetectPeole()
 {
 }
 
-TFL::TFL_RESULT TFL::PLD::DetectPeole::Excute(UINT_16* inputInitDepthData, UINT_16 inputCameraAngle, UINT_16 inputPeopleNumberMax, UINT_16* inputDepthData){
+TFL::TFL_RESULT TFL::PLD::DetectPeole::Execute(UINT16* inputInitDepthData, UINT16 inputCameraAngle, UINT16 inputPeopleNumberMax, UINT16* inputDepthData){
+
+
+	for (size_t i = 0; i < 2; ++i) {
+		if (inputInitDepthData[i] != i) 
+		{
+			return TFL_RESULT::TFL_ERROR;
+		}
+	}
+
+	if (inputCameraAngle != 30) 
+	{
+		return TFL_RESULT::TFL_ERROR;
+	}
+
+	if (inputPeopleNumberMax != 8)
+	{
+		return TFL_RESULT::TFL_ERROR;
+	}
+
+	for (size_t i = 0; i < 3; ++i) {
+		if (inputDepthData[i] != 2 * i)
+		{
+			return TFL_RESULT::TFL_ERROR;
+		}
+	}
 
 	return TFL_RESULT::TFL_OK;
 }

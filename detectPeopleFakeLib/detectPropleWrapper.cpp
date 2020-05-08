@@ -14,14 +14,13 @@ void DisposeInstance(DetectPeole* pInstance)
     }
 }
 
-TFL_RESULT ExcuteWrapper(DetectPeole* pInstance, UINT_16* inputInitDepthData, UINT_16 inputCameraAngle, UINT_16 inputPeopleNumberMax, UINT_16* inputDepthData) {
-
-    return pInstance->Excute(inputInitDepthData, inputCameraAngle, inputPeopleNumberMax, inputDepthData);
+TFL_RESULT ExecuteWrapper(DetectPeole* pInstance, UINT_16* inputInitDepthData, UINT_16 inputCameraAngle, UINT_16 inputPeopleNumberMax, UINT_16* inputDepthData)
+{
+    return pInstance->Execute(inputInitDepthData, inputCameraAngle, inputPeopleNumberMax, inputDepthData);
 }
 
 TFL_RESULT GetGroundCloudWrapper(DetectPeole* pInstance, TFL_PointXYZ** outputGetGroundPlaneCloud, size_t* size) {
     
-    //auto* items = new TFL_PointCloud();
     TFL_PointCloud* items = new TFL_PointCloud();
     pInstance->GetGroundCloud(*items);
     *outputGetGroundPlaneCloud = items->data();
